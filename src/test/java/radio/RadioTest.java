@@ -4,9 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+    Radio rad = new Radio(10 , 100);
+
     @Test
-    public void test1() {
-        Radio rad = new Radio();
+    public void newStation() {
         rad.setCurrentStation(7);
 
         int expected = 7;
@@ -16,19 +17,19 @@ public class RadioTest {
     }
 
     @Test
-    public void test2() {
-        Radio vol = new Radio();
-        vol.setCurrentVolume(8);
+    public void newVolume() {
+
+        rad.setCurrentVolume(8);
 
         int expected = 8;
-        int actual = vol.getCurrentVolume();
+        int actual = rad.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
-    public void test3() {
-        Radio rad = new Radio();
+    public void validStationLeft() {
+
         rad.setCurrentStation(7);
         rad.setCurrentStation(-1);
 
@@ -38,8 +39,8 @@ public class RadioTest {
     }
 
     @Test
-    public void test4() {
-        Radio rad = new Radio();
+    public void validStationRight() {
+
         rad.setCurrentStation(10);
 
         int expected = 0;
@@ -48,8 +49,8 @@ public class RadioTest {
     }
 
     @Test
-    public void test5() {
-        Radio rad = new Radio();
+    public void validStationOk() {
+
         rad.setCurrentStation(5);
 
         int expected = 5;
@@ -58,10 +59,10 @@ public class RadioTest {
     }
 
     @Test
-    public void test6() {
-        Radio rad = new Radio();
+    public void nextStation() {
+
         rad.setCurrentStation(7);
-        rad.next();
+        rad.nextStation();
 
         int expected = 8;
         int actual = rad.getCurrentStation();
@@ -69,10 +70,10 @@ public class RadioTest {
     }
 
     @Test
-    public void test7() {
-        Radio rad = new Radio();
+    public void nextStationMax() {
+
         rad.setCurrentStation(9);
-        rad.next();
+        rad.nextStation();
 
         int expected = 0;
         int actual = rad.getCurrentStation();
@@ -80,10 +81,10 @@ public class RadioTest {
     }
 
     @Test
-    public void test8() {
-        Radio rad = new Radio();
+    public void prevStation() {
+
         rad.setCurrentStation(7);
-        rad.prev();
+        rad.prevStation();
 
         int expected = 6;
         int actual = rad.getCurrentStation();
@@ -91,9 +92,9 @@ public class RadioTest {
     }
 
     @Test
-    public void test9() {
-        Radio rad = new Radio();
-        rad.prev();
+    public void prevStationMin() {
+        rad.setCurrentStation(0);
+        rad.prevStation();
 
         int expected = 9;
         int actual = rad.getCurrentStation();
@@ -101,30 +102,30 @@ public class RadioTest {
     }
 
     @Test
-    public void test10() {
-        Radio rad = new Radio();
-        rad.setCurrentVolume(7);
+    public void volumeUp() {
+
+        rad.setCurrentVolume(57);
         rad.increaseVolume();
 
-        int expected = 8;
+        int expected = 58;
         int actual = rad.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void test11() {
-        Radio rad = new Radio();
-        rad.setCurrentVolume(10);
+    public void volumeUpMax() {
+
+        rad.setCurrentVolume(100);
         rad.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = rad.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void test12() {
-        Radio rad = new Radio();
+    public void volumeDown() {
+
         rad.setCurrentVolume(7);
         rad.creaseVolume();
 
@@ -134,8 +135,8 @@ public class RadioTest {
     }
 
     @Test
-    public void test13() {
-        Radio rad = new Radio();
+    public void volumeDownMin() {
+
         rad.setCurrentVolume(0);
         rad.creaseVolume();
 
