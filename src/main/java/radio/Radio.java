@@ -2,39 +2,51 @@ package radio;
 
 public class Radio {
     private int currentStation;
+    private int maxCurrentStation = 10;
     private int currentVolume;
+    private int maxCurrentVolume = 100;
+    
+    public Radio(){
+        maxCurrentStation = 10;
+    }
 
+    public Radio(int maxCurrentStation){
+        this.maxCurrentStation = maxCurrentStation;
+    }
     public void setCurrentStation(int inStation) {
         if (inStation < 0) {
             return;
         }
-        if (inStation > 9) {
+        if (inStation > maxCurrentStation - 1) {
             return;
         }
         currentStation = inStation;
     }
-    public int getCurrentStation(){
+
+    public int getCurrentStation() {
         return currentStation;
     }
-    public void setCurrentVolume(int inVolume){
+
+    public void setCurrentVolume(int inVolume) {
 
         currentVolume = inVolume;
     }
-    public int getCurrentVolume(){
+
+    public int getCurrentVolume() {
         return currentVolume;
     }
 
-    public void next() {
-        if (currentStation == 9) {
+    public void nextStation() {
+        if (currentStation == maxCurrentStation - 1) {
             currentStation = 0;
         } else {
             currentStation++;
         }
     }
 
-    public void prev() {
+    public void prevStation() {
         if (currentStation == 0) {
-            currentStation = 9;
+            currentStation = maxCurrentStation - 1;
         } else {
             currentStation--;
         }
@@ -42,7 +54,7 @@ public class Radio {
 
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < maxCurrentVolume) {
             currentVolume = currentVolume + 1;
         }
     }
