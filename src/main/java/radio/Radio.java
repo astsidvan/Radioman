@@ -10,7 +10,7 @@ public class Radio {
         maxCurrentStation = 10;
     }
 
-    public Radio(int maxCurrentStation, int maxCurrentVolume){
+    public Radio(int maxCurrentStation){
         this.maxCurrentStation = maxCurrentStation;
     }
     public void setCurrentStation(int inStation) {
