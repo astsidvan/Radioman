@@ -5,6 +5,10 @@ public class Radio {
     private int maxCurrentStation = 10;
     private int currentVolume;
     private int maxCurrentVolume = 100;
+    
+    public Radio(){
+        maxCurrentStation = 10;
+    }
 
     public Radio(int maxCurrentStation, int maxCurrentVolume){
         this.maxCurrentStation = maxCurrentStation;
